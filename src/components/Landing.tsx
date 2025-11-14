@@ -69,17 +69,6 @@ export const Landing = ({ onStartChat }: LandingProps) => {
                 </div>
               </div>
 
-              {/* Right Column - Image */}
-              <div className="relative animate-fade-in" style={{ animationDelay: "200ms" }}>
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                  <img
-                    src={''}
-                    alt="Абстрактная иллюстрация снов"
-                    className="w-full h-auto"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent"></div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
