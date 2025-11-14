@@ -1,4 +1,4 @@
-import './App.css'
+
 import { Landing } from './components/Landing'
 import { ChatInterface } from './components/ChatInterface'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
