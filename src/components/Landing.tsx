@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 interface LandingProps {
   onStartChat: () => void;
@@ -45,7 +46,7 @@ export const Landing = ({ onStartChat }: LandingProps) => {
                   onMouseLeave={() => setIsHovering(false)}
                   className="group relative px-8 py-4 bg-primary text-primary-foreground rounded-2xl font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/50"
                 >
-                  <span className="relative z-10">Начать разговор</span>
+                  <Link to={'/chat'} className="relative z-10">Начать разговор</Link>
                   <div className={`absolute inset-0 rounded-2xl bg-primary/80 transition-opacity duration-300 ${isHovering ? 'opacity-100' : 'opacity-0'}`}></div>
                 </button>
 
