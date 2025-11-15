@@ -14,6 +14,15 @@ interface ChatInterfaceProps {
   onBackToLanding: () => void;
 }
 
+const cleanText = (text: string): string => {
+  return text
+    .replace(/\*\*/g, '')           // убираем жирный шрифт
+    .replace(/^\s*-\s*/gm, '')      // убираем маркеры списка
+    .replace(/^(\d+\.\s*)/gm, '')   // убираем нумерацию
+    .replace(/\n+/g, '\n')          // схлопываем лишние переносы
+    .trim();
+};
+
 export const ChatInterface = ({ onBackToLanding }: ChatInterfaceProps) => {
   const [inputValue, setInputValue] = useState('');
   const { messages, addMessage } = useMessagesStore();
@@ -92,7 +101,10 @@ export const ChatInterface = ({ onBackToLanding }: ChatInterfaceProps) => {
           {messages.map((message, index) => (
             <MessageBubble
               key={message.id}
-              message={message}
+              message={{
+                ...message,
+                content: cleanText(message.content),
+              }}
               isLast={index === messages.length - 1}
               isSpeaking={isSpeaking && currentMessageId === message.id}
               onSpeak={() => speak(message.content, message.id)}

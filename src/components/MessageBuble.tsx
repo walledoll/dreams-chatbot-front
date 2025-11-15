@@ -15,6 +15,8 @@ interface IMessageBubble{
     onStop: () => void;
 }
 
+
+
 export const MessageBubble = ({ message, isLast, isSpeaking, onSpeak, onStop }: IMessageBubble) => {
     return (
         <div className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'} animate-slide-up`}>
