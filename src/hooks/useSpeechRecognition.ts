@@ -11,7 +11,7 @@ export const useSpeechRecognition = (onResult: (text: string) => void) => {
       return;
     }
 
-    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    const recognition = new ((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition)();
     recognition.lang = 'ru-RU';
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
@@ -21,12 +21,12 @@ export const useSpeechRecognition = (onResult: (text: string) => void) => {
       setError(null);
     };
 
-    recognition.onresult = (event) => {
+    recognition.onresult = (event: any) => {
       const transcript = event.results[0][0].transcript;
       onResult(transcript);
     };
 
-    recognition.onerror = (event) => {
+    recognition.onerror = (event: any) => {
       setError(`Ошибка распознавания: ${(event.error as string)}`);
       setIsListening(false);
     };

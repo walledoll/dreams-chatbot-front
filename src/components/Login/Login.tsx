@@ -6,7 +6,6 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from "../ui/button";
 import { Link, useNavigate } from "react-router-dom";
-import { useRegister } from "@/hooks/useAuth";
 import { toast } from 'react-toastify';
 import { Header } from "../Header";
 
@@ -16,7 +15,6 @@ export default function Register() {
   const navigate = useNavigate();
   const {
     register,
-    control,
     handleSubmit,
     formState: { errors },
     setError
@@ -25,9 +23,8 @@ export default function Register() {
     mode: 'onSubmit',
   });
 
-  const { mutateAsync: registerUser } = useRegister();
 
-  const onSubmit = async ( data: Form) => {
+  const onSubmit = async () => {
     try {
         /*await registerUser({
             name: data.name,

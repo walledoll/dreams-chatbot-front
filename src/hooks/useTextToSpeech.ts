@@ -6,6 +6,14 @@ export const useTextToSpeech = () => {
   const [currentMessageId, setCurrentMessageId] = useState<string | null>(null);
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
 
+  const stop = useCallback(() => {
+    if (speechSynthesis.speaking) {
+      speechSynthesis.cancel();
+      setIsSpeaking(false);
+      setCurrentMessageId(null);
+    }
+  }, []);
+
   const speak = useCallback((text: string, messageId: string) => {
     if (isSpeaking && currentMessageId === messageId) {
       stop();
@@ -34,13 +42,7 @@ export const useTextToSpeech = () => {
     speechSynthesis.speak(utterance);
   }, [isSpeaking, currentMessageId]);
 
-  const stop = useCallback(() => {
-    if (speechSynthesis.speaking) {
-      speechSynthesis.cancel();
-      setIsSpeaking(false);
-      setCurrentMessageId(null);
-    }
-  }, []);
+
 
   return { isSpeaking, speak, stop, currentMessageId };
 };

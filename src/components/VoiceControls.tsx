@@ -7,7 +7,7 @@ interface IVoiceControls {
     speechError?: string;
 }
 
-export const VoiceControls = ({ isListening, isSpeaking, isBotTyping, onStartListening, onSpeak, speechError }: IVoiceControls) => {
+export const VoiceControls = ({ isListening,  isBotTyping, onStartListening, speechError }: IVoiceControls) => {
     return(
         <>
             <div className="absolute left-3 bottom-3 flex gap-2">
