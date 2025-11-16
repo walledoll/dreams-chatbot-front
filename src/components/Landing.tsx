@@ -1,11 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-interface LandingProps {
-  onStartChat: () => void;
-}
-
-export const Landing = ({ onStartChat }: LandingProps) => {
+export const Landing = () => {
   const [isHovering, setIsHovering] = useState(false);
 
   return (
@@ -28,9 +24,9 @@ export const Landing = ({ onStartChat }: LandingProps) => {
         {/* Hero Content */}
         <div className="relative z-10 px-6 py-16 md:py-24">
           <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="flex  gap-12 items-center justify-center w-full">
               {/* Left Column - Text */}
-              <div className="space-y-8 animate-fade-in">
+              <div className="space-y-8 animate-fade-in flex flex-col justify-center">
                 <div className="space-y-4">
                   <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-foreground">
                     Поговори с<br />подсознанием
@@ -40,15 +36,15 @@ export const Landing = ({ onStartChat }: LandingProps) => {
                   </p>
                 </div>
 
-                <button
-                  onClick={onStartChat}
+                <Link
+                  to='/chat'
                   onMouseEnter={() => setIsHovering(true)}
                   onMouseLeave={() => setIsHovering(false)}
-                  className="group relative px-8 py-4 bg-primary text-primary-foreground rounded-2xl font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/50"
+                  className="group relative text-center px-8 py-4 bg-primary text-primary-foreground rounded-2xl font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/50"
                 >
-                  <Link to={'/chat'} className="relative z-10">Начать разговор</Link>
+                  <p className="relative z-10">Начать разговор</p>
                   <div className={`absolute inset-0 rounded-2xl bg-primary/80 transition-opacity duration-300 ${isHovering ? 'opacity-100' : 'opacity-0'}`}></div>
-                </button>
+                </Link>
 
                 {/* Benefits */}
                 <div className="grid gap-4 pt-8">

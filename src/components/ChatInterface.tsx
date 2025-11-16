@@ -10,10 +10,6 @@ import { TypingIndicator } from './TypingIndicator';
 import { VoiceControls } from './VoiceControls';
 import { useMessagesStore } from '@/store/store';
 
-interface ChatInterfaceProps {
-  onBackToLanding: () => void;
-}
-
 const cleanText = (text: string): string => {
   return text
     .replace(/\*\*/g, '')           // убираем жирный шрифт
@@ -23,7 +19,7 @@ const cleanText = (text: string): string => {
     .trim();
 };
 
-export const ChatInterface = ({ onBackToLanding }: ChatInterfaceProps) => {
+export const ChatInterface = () => {
   const [inputValue, setInputValue] = useState('');
   const { messages, addMessage } = useMessagesStore();
   const messagesEndRef = useAutoScroll([messages]);
@@ -94,7 +90,7 @@ export const ChatInterface = ({ onBackToLanding }: ChatInterfaceProps) => {
 
   return (
     <div className="flex flex-col h-screen bg-background">
-      <Header onBackToLanding={onBackToLanding} isBotTyping={isBotTyping} />
+      <Header isBotTyping={isBotTyping} />
 
       <div className="flex-1 overflow-y-auto px-6 py-8">
         <div className="max-w-4xl mx-auto space-y-6">

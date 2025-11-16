@@ -1,14 +1,15 @@
+import { Link } from "react-router-dom";
+
 interface HeaderProps {
-    onBackToLanding: () => void;
     isBotTyping: boolean;
 }
 
-export const Header = ({ onBackToLanding, isBotTyping } :HeaderProps) => {
+export const Header = ({ isBotTyping } :HeaderProps) => {
     return (
-  <header className="flex-none border-b border-border bg-card px-6 py-4">
+  <header className="flex-none border-b border-border bg-card px-6 py-4 w-full">
     <div className="max-w-5xl mx-auto flex items-center justify-between">
-      <button
-        onClick={onBackToLanding}
+      <Link
+        to='/'
         className="flex items-center gap-3 transition-opacity hover:opacity-80"
       >
         <div className="text-2xl">🌙</div>
@@ -25,7 +26,7 @@ export const Header = ({ onBackToLanding, isBotTyping } :HeaderProps) => {
             )}
           </p>
         </div>
-      </button>
+      </Link>
     </div>
   </header>
 );

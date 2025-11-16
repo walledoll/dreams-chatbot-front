@@ -4,6 +4,7 @@ import { ChatInterface } from './components/ChatInterface'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Register from './components/Register/Register'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import Login from './components/Login/Login';
 
 function App() {
   const queryClient = new QueryClient();
@@ -12,14 +13,9 @@ function App() {
       <BrowserRouter>
           <Routes>
             <Route path='/register' element={<Register/>}/>
-            <Route path='/' element={<Landing onStartChat={function (): void {
-              throw new Error('Function not implemented.')
-            } }/>}>
-
-            </Route>
-            <Route path='/chat' element={<ChatInterface onBackToLanding={function (): void {
-              throw new Error('Function not implemented.')
-            } }/>} />
+            <Route path='login' element={<Login/>} />
+            <Route path='/' element={<Landing /> } />
+            <Route path='/chat' element={<ChatInterface />} />
           </Routes>
         </BrowserRouter>
     </QueryClientProvider>
